@@ -98,55 +98,55 @@ export default function Donations() {
   };
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
+    <div className="p-4 md:p-6 max-w-3xl mx-auto">
       <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-5 text-white text-center">
-          <h2 className="text-2xl font-bold">Mandir Donation</h2>
+        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 md:p-5 text-white text-center">
+          <h2 className="text-xl md:text-2xl font-bold">Mandir Donation</h2>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-4 md:p-6 space-y-4">
           {/* Razorpay SDK status */}
           {!razorpayLoaded && (
-            <div className="bg-amber-50 border border-amber-200 text-amber-800 rounded-xl p-4">
-              <div className="font-semibold">⏳ Loading Payment System...</div>
-              <div className="text-sm">Connecting to Razorpay. Please wait or check your internet connection.</div>
+            <div className="bg-amber-50 border border-amber-200 text-amber-800 rounded-xl p-3 md:p-4">
+              <div className="font-semibold text-sm md:text-base">⏳ Loading Payment System...</div>
+              <div className="text-xs md:text-sm">Connecting to Razorpay. Please wait or check your internet connection.</div>
             </div>
           )}
 
           {/* Success banner (no instructions) */}
           {success && (
-            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-4">
-              <div className="font-semibold">Donation Successful</div>
-              <div className="text-sm">Thank you, {success.name}! You donated ₹{success.amount}.</div>
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-3 md:p-4">
+              <div className="font-semibold text-sm md:text-base">Donation Successful</div>
+              <div className="text-xs md:text-sm">Thank you, {success.name}! You donated ₹{success.amount}.</div>
             </div>
           )}
 
           {/* Form */}
           <div>
-            <label className="block font-medium mb-1">Your Name</label>
+            <label className="block font-medium mb-1 text-sm md:text-base">Your Name</label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your full name"
-              className="w-full p-3 border rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full p-2 md:p-3 border rounded-xl mb-3 md:mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
             />
 
-            <label className="block font-medium mb-1">Enter Amount</label>
+            <label className="block font-medium mb-1 text-sm md:text-base">Enter Amount</label>
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter donation amount"
-              className="w-full p-3 border rounded-xl mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full p-2 md:p-3 border rounded-xl mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
             />
 
-            <div className="flex gap-3 mb-5 flex-wrap">
+            <div className="flex gap-2 md:gap-3 mb-4 md:mb-5 flex-wrap">
               {quickAmounts.map((amt) => (
                 <button
                   key={amt}
                   onClick={() => setAmount(amt)}
-                  className="px-4 py-2 bg-gray-100 rounded-xl hover:bg-gray-200"
+                  className="px-3 md:px-4 py-2 bg-gray-100 rounded-xl hover:bg-gray-200 text-sm md:text-base"
                 >
                   ₹{amt}
                 </button>
@@ -158,7 +158,7 @@ export default function Donations() {
               <button
                 onClick={() => startRazorpayPayment("upi-app")}
                 disabled={!canProceed || !!loadingMode || !razorpayLoaded}
-                className={`w-full px-5 py-3 rounded-xl text-white ${
+                className={`w-full px-4 md:px-5 py-3 rounded-xl text-white text-sm md:text-base ${
                   !canProceed || !!loadingMode || !razorpayLoaded ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"
                 }`}
               >
@@ -168,7 +168,7 @@ export default function Donations() {
               <button
                 onClick={() => startRazorpayPayment("qr")}
                 disabled={!canProceed || !!loadingMode || !razorpayLoaded}
-                className={`w-full px-5 py-3 rounded-xl text-white ${
+                className={`w-full px-4 md:px-5 py-3 rounded-xl text-white text-sm md:text-base ${
                   !canProceed || !!loadingMode || !razorpayLoaded ? "bg-gray-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-700"
                 }`}
               >

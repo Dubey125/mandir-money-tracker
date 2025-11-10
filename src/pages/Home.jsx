@@ -86,9 +86,9 @@ export default function Home() {
     .slice(0, 5);
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       {/* Hero: image slider left, title + donate right */}
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 mb-6 md:mb-8">
         {/* Left: Image slider */}
         <div className="w-full md:w-1/3 flex justify-center md:justify-start">
           <div className="relative">
@@ -96,10 +96,10 @@ export default function Home() {
               <img
                 src={images[active]}
                 alt={`Mandir ${active + 1}`}
-                className="rounded-2xl shadow-lg h-72 w-64 object-cover"
+                className="rounded-2xl shadow-lg h-64 w-56 sm:h-72 sm:w-64 object-cover"
               />
             ) : (
-              <div className="w-64 h-72 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400">
+              <div className="w-56 h-64 sm:w-64 sm:h-72 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400">
                 Image
               </div>
             )}
@@ -119,14 +119,14 @@ export default function Home() {
         </div>
 
         {/* Right: Title, Sanskrit line + meaning and Donate button */}
-        <div className="w-full md:w-2/3 flex flex-col md:items-start">
+        <div className="w-full md:w-2/3 flex flex-col md:items-start text-center md:text-left">
           <div className="w-full">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-orange-700 leading-snug">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-orange-700 leading-snug">
               भक्त्या हृदयं समर्प्यते,सेवया जीवनं पवित्रम्।
               <br />शिवदानेन लोकोऽयं शुभं भवेत्॥
             </h2>
 
-            <p className="mt-3 text-gray-700 max-w-2xl text-base md:text-lg">
+            <p className="mt-3 text-gray-700 max-w-2xl text-sm sm:text-base md:text-lg">
               Offer your heart in devotion, purify your life through service.
               <br />Let your gift to Lord Shiva bless the world.
             </p>
@@ -134,7 +134,7 @@ export default function Home() {
             <div className="mt-5">
               <button
                 onClick={() => navigate('/donations')}
-                className="px-7 py-4 text-lg bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-700"
+                className="px-6 py-3 sm:px-7 sm:py-4 text-base sm:text-lg bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-700 w-full sm:w-auto"
               >
                 Donate Now
               </button>
@@ -144,20 +144,20 @@ export default function Home() {
       </div>
 
       {/* Stats Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-8">
-        <div className="bg-green-100 p-6 rounded-xl shadow">
-          <h2 className="text-gray-600">This Month's Collection</h2>
-          <p className="text-2xl font-bold text-green-600">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 text-center mb-6 md:mb-8">
+        <div className="bg-green-100 p-4 md:p-6 rounded-xl shadow">
+          <h2 className="text-sm md:text-base text-gray-600">This Month's Collection</h2>
+          <p className="text-xl md:text-2xl font-bold text-green-600">
             ₹{thisMonthCollection}
           </p>
         </div>
-        <div className="bg-red-100 p-6 rounded-xl shadow">
-          <h2 className="text-gray-600">Spent This Month</h2>
-          <p className="text-2xl font-bold text-red-600">₹{thisMonthSpend}</p>
+        <div className="bg-red-100 p-4 md:p-6 rounded-xl shadow">
+          <h2 className="text-sm md:text-base text-gray-600">Spent This Month</h2>
+          <p className="text-xl md:text-2xl font-bold text-red-600">₹{thisMonthSpend}</p>
         </div>
-        <div className="bg-blue-100 p-6 rounded-xl shadow">
-          <h2 className="text-gray-600">Balance Left (Total)</h2>
-          <p className="text-2xl font-bold text-blue-600">₹{balanceLeft}</p>
+        <div className="bg-blue-100 p-4 md:p-6 rounded-xl shadow sm:col-span-2 md:col-span-1">
+          <h2 className="text-sm md:text-base text-gray-600">Balance Left (Total)</h2>
+          <p className="text-xl md:text-2xl font-bold text-blue-600">₹{balanceLeft}</p>
         </div>
       </div>
 
