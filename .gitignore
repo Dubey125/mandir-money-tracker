@@ -23,6 +23,11 @@ backend/.env
 backend/firebaseServiceAccount.json
 backend/config/firebaseServiceAccount.json
 
+# Exposed private keys (never commit)
+FIREBASE_PRIVATE_KEY.txt
+QUICK_DEPLOY_GUIDE.txt
+RENDER_DEPLOY_STEPS.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
