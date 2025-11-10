@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Publicly readable donations; writes only via backend Admin SDK
+    match /donations/{docId} {
+      allow read: if true;
+      allow write: if false; // Locked down - use backend webhook/Admin SDK only
+    }
+
+    // Publicly readable expenses; currently writable from client app
+    // TODO: Restrict writes to authenticated admins for production
+    match /expenses/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
