@@ -58,7 +58,7 @@ export default function Donations() {
         return;
       }
 
-      // Configure Razorpay with UPI as preferred method
+      // Razorpay options - simplified to show all payment methods
       const options = {
         key,
         amount: Number(amount) * 100,
@@ -68,13 +68,6 @@ export default function Donations() {
         order_id: data.orderId,
         prefill: { name: username || "Anonymous" },
         theme: { color: "#4f46e5" },
-        config: {
-          display: {
-            preferences: {
-              show_default_blocks: true, // Show all payment options
-            },
-          },
-        },
         handler: function (response) {
           addDonation({
             name: username || "Anonymous",
@@ -89,13 +82,6 @@ export default function Donations() {
           ondismiss: function () {
             // user closed without paying - do nothing
           },
-        },
-        // Razorpay will automatically show UPI apps on mobile
-        method: {
-          upi: true,
-          card: true,
-          netbanking: true,
-          wallet: true,
         },
       };
 
