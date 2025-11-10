@@ -58,16 +58,23 @@ export default function Donations() {
         return;
       }
 
-      // Allow ALL payment methods - UPI, cards, netbanking, wallets
+      // Configure Razorpay with UPI as preferred method
       const options = {
         key,
         amount: Number(amount) * 100,
         currency: "INR",
         name: "Vishwanath Mandir",
-        description: "Donation - All Payment Methods",
+        description: "Donation",
         order_id: data.orderId,
         prefill: { name: username || "Anonymous" },
         theme: { color: "#4f46e5" },
+        config: {
+          display: {
+            preferences: {
+              show_default_blocks: true, // Show all payment options
+            },
+          },
+        },
         handler: function (response) {
           addDonation({
             name: username || "Anonymous",
@@ -83,7 +90,13 @@ export default function Donations() {
             // user closed without paying - do nothing
           },
         },
-        // Note: Razorpay automatically shows UPI apps on mobile and QR on desktop
+        // Razorpay will automatically show UPI apps on mobile
+        method: {
+          upi: true,
+          card: true,
+          netbanking: true,
+          wallet: true,
+        },
       };
 
       new window.Razorpay(options).open();
