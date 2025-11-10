@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <Link to="/" className="hover:underline">Home</Link>
           <Link to="/recent" className="hover:underline text-sm lg:text-base">Recent Donations</Link>
-          <Link to="/donations" className="hover:underline">Donations</Link>
+          <Link to="/donations" className="hover:underline">Donate Now</Link>
           <Link to="/expenses" className="hover:underline">Expenses</Link>
 
           {!isAdmin ? (
@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="md:hidden mt-4 space-y-2 bg-indigo-700 rounded-lg p-4">
           <Link to="/" className="block py-2 hover:bg-indigo-600 px-3 rounded" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/recent" className="block py-2 hover:bg-indigo-600 px-3 rounded" onClick={() => setMenuOpen(false)}>Recent Donations</Link>
-          <Link to="/donations" className="block py-2 hover:bg-indigo-600 px-3 rounded" onClick={() => setMenuOpen(false)}>Donations</Link>
+          <Link to="/donations" className="block py-2 hover:bg-indigo-600 px-3 rounded" onClick={() => setMenuOpen(false)}>Donate Now</Link>
           <Link to="/expenses" className="block py-2 hover:bg-indigo-600 px-3 rounded" onClick={() => setMenuOpen(false)}>Expenses</Link>
           
           {!isAdmin ? (
