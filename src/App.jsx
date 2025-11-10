@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import { AppProvider } from "./context/AppContext";
 import RecentDonations from "./pages/RecentDonations";
+import MandirPoojan from "./pages/MandirPoojan";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/recent" element={<RecentDonations />} />
+            <Route path="/poojan" element={<MandirPoojan />} />
             <Route path="/pd" element={<PublicDashboard />} />
             <Route path="/donations" element={<Donations />} />
             <Route path="/expenses" element={<Expenses />} />
