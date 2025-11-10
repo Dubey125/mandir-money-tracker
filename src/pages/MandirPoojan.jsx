@@ -437,7 +437,7 @@ export default function MandirPoojan() {
       ) : (
         /* Content Display */
         <div className="max-w-4xl mx-auto">
-          <div className="mb-4 flex items-center gap-3">
+          <div className="mb-4 flex items-center justify-between">
             <button
               onClick={() => setSelectedItem(null)}
               className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 flex items-center gap-2"
@@ -451,7 +451,7 @@ export default function MandirPoojan() {
                 const nextIndex = (currentIndex + 1) % sections.length;
                 setSelectedItem(sections[nextIndex]);
               }}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2"
+              className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2 font-semibold"
             >
               अगला →
             </button>

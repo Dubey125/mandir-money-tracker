@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 md:gap-4">
           <Link to="/" className="flex items-center gap-2 md:gap-3" onClick={() => setMenuOpen(false)}>
             <span className="text-xl md:text-2xl">🛕</span>
-            <span className="font-bold text-base md:text-lg">Vishwanath Mandir</span>
+            <span className="font-bold text-base md:text-lg">विश्वनाथ मंदिर</span>
           </Link>
           <span className="hidden lg:inline-block text-sm text-indigo-100/80">
             {isAdmin ? <strong>Admin View</strong> : "Public View"}
