@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useAppData } from "../context/AppContext";
 
 export default function AdminDashboard() {
-  const { donations, expenses, addExpense } = useAppData();
+  const { donations, expenses, addExpense, addNotification } = useAppData();
   const [form, setForm] = useState({ purpose: "", description: "", amount: "", imageFile: null, imagePreview: "" });
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [notificationSent, setNotificationSent] = useState(false);
 
   const totalDonations = donations.reduce((sum, d) => sum + d.amount, 0);
   const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
@@ -33,6 +35,18 @@ export default function AdminDashboard() {
     setForm({ purpose: "", description: "", amount: "", imageFile: null, imagePreview: "" });
   };
 
+  const handleSendNotification = (e) => {
+    e.preventDefault();
+    if (!notificationMessage.trim()) return;
+    
+    addNotification(notificationMessage);
+    setNotificationMessage("");
+    setNotificationSent(true);
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => setNotificationSent(false), 3000);
+  };
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold text-indigo-600">⚙️ Admin Dashboard</h1>
@@ -51,6 +65,36 @@ export default function AdminDashboard() {
           <p className="text-lg font-semibold">Balance</p>
           <p className="text-2xl font-bold text-blue-700">₹{balance}</p>
         </div>
+      </div>
+
+      {/* Send Notification Form */}
+      <div className="bg-gradient-to-br from-orange-50 to-yellow-50 shadow-lg p-5 rounded-lg border-2 border-orange-200">
+        <h2 className="text-xl font-semibold text-orange-700 mb-3 flex items-center gap-2">
+          🔔 Send Notification to All Users
+        </h2>
+        <form onSubmit={handleSendNotification} className="space-y-4">
+          <textarea
+            placeholder="Enter notification message..."
+            value={notificationMessage}
+            onChange={(e) => setNotificationMessage(e.target.value)}
+            className="w-full border-2 border-orange-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange-400"
+            rows={3}
+            required
+          />
+          <div className="flex items-center gap-3">
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg hover:from-orange-600 hover:to-orange-700 font-semibold shadow-md"
+            >
+              Send Notification
+            </button>
+            {notificationSent && (
+              <span className="text-green-600 font-semibold flex items-center gap-1">
+                ✓ Notification sent successfully!
+              </span>
+            )}
+          </div>
+        </form>
       </div>
 
       {/* Add Expense Form */}
